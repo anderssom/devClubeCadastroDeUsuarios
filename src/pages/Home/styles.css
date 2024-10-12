@@ -7,7 +7,7 @@
 
 h1 {
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 form {
@@ -34,6 +34,44 @@ form {
     & button:hover {
         opacity: o.8;
     }
+
+    & input {
+        border: 1px solid #48456C;
+        border-radius: 30px;
+        height: 40px;
+        background-color: #363653;
+        color: #fff;
+        font-size: 16px;
+        padding-left: 10px;
+        outline: none;
+    }
 }
 
+.card {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2E2D4E;
+    padding: 10px;
+    border-radius: 10px;
+    width: 400%;
+    margin: 10px;
 
+    & p {
+        color: #fff;
+        font-weight: bold;
+
+    & span {
+        font-weight: normal;
+    }
+}
+
+& button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+& button:hover {
+    opacity: 0.5;
+}
+}
