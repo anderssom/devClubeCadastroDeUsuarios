@@ -24,15 +24,16 @@ const inputEmail = useRef('');
       age: inputAge.current.value,
       email: inputEmail.current.value
     });
-    getUsers()
+    getUsers();
   }
   //deletar users
   async function deleteUsers(id) {
-    await api.get(`/users/${id}`);
+    await api.delete(`/users/${id}`);
 
-    getUsers()
+    getUsers();
     
   }
+
   useEffect(() => {
     getUsers()
     }, []);
@@ -55,7 +56,7 @@ const inputEmail = useRef('');
             <p>Idade: <span>{user.age}</span></p>
             <p>Email: <span>{user.email}</span></p>
           </div>
-          <button onClick={ () => deleteUsers(user.idS)}>
+          <button onClick={ () => deleteUsers(user.id)} >
             <img src={Trash}/>
           </button>
         </div>
