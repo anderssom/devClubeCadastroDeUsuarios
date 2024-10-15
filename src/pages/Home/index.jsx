@@ -1,16 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,  useRef } from 'react';
 import './styles.css'
 import Trash from '../../assets/trash.svg';
 import api  from '../../services/api';
 
 function Home() {
 const [users, setUsers] =  useState([]);
+//salva os inputs
+const inputName  = useRef('');
+const inputAge = useRef('');
+const inputEmail = useRef('');
 
+//lista users
   async function getUsers() {
-    const usersFromApi = await api.get('/users')
-    console.log(usersFromApi)
+    const usersFromApi = await api.get('/users');
+
     setUsers(usersFromApi.data);
     
+  }
+  //pega os inputs e cria novos users
+  async function creatUsers() {
+    await api.post('/users', {
+      name: inputName.current.value,
+      age: inputAge.current.value,
+      email: inputEmail.current.value
+    });
+    getUsers()
   }
   useEffect(() => {
     getUsers()
@@ -21,11 +35,12 @@ const [users, setUsers] =  useState([]);
       <div  className="container">
         <form>
           <h1>Cadastro de Usuarios</h1>
-          <input placeholder='Digite seu nome' name='nome' type="text" />
-          <input placeholder='Digite sua idade' name='idade' type="number" />
-          <input placeholder='Digite seu E-mail' name='email' type="email" />
-          <button type='button'>Cadastrar</button>
+          <input placeholder='Digite seu nome' name='nome' type="text" ref={inputName}/>
+          <input placeholder='Digite sua idade' name='idade' type="number" ref={inputAge}/>
+          <input placeholder='Digite seu E-mail' name='email' type="email" ref={inputEmail}/>
+          <button type='button' onClick={creatUsers} >Cadastrar</button>
         </form>
+
         {users.map(user => (
           <div key={user.id} className='card' >
           <div>

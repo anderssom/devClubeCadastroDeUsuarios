@@ -53,8 +53,8 @@ form {
     background-color: #2E2D4E;
     padding: 10px;
     border-radius: 10px;
-    width: 400%;
-    margin: 10px;
+    width: 400px;
+    margin: 10px;  
 
     & p {
         color: #fff;
@@ -74,4 +74,4 @@ form {
 & button:hover {
     opacity: 0.5;
 }
-}
+} 
