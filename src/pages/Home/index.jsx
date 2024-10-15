@@ -26,6 +26,13 @@ const inputEmail = useRef('');
     });
     getUsers()
   }
+  //deletar users
+  async function deleteUsers(id) {
+    await api.get(`/users/${id}`);
+
+    getUsers()
+    
+  }
   useEffect(() => {
     getUsers()
     }, []);
@@ -48,7 +55,7 @@ const inputEmail = useRef('');
             <p>Idade: <span>{user.age}</span></p>
             <p>Email: <span>{user.email}</span></p>
           </div>
-          <button>
+          <button onClick={ () => deleteUsers(user.idS)}>
             <img src={Trash}/>
           </button>
         </div>
